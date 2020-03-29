@@ -14,5 +14,15 @@
             "${file}"
         ],
         "type": "process"
+    },
+    {
+        "label": "Deploy Scripts To Homeseer",
+        "command": "scp",
+        "args": [
+            "${workspaceFolder}/*.cs",
+            "homeseer@192.168.0.151:/usr/local/HomeSeer/scripts"
+        ],
+        "type": "shell",
+        "problemMatcher": []
     }],
 }
