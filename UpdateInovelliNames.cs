@@ -12,14 +12,13 @@ using HSCF;
 using System.Collections.Specialized;
 using System.Collections.Generic;
 
-static string ROOT_ZWAVE_DEVICE = "Z-Wave Switch Root Device";
+string ROOT_ZWAVE_DEVICE = "Z-Wave Switch Root Device";
 
-static int MANUFACTURER_INNOVELLI = 798;
+int MANUFACTURER_INNOVELLI = 798;
 
 // hs_connect 192.168.0.151:10400
 
-public static void Main(string[] args)
-{
+public void Main(object args) {
     Scheduler.Classes.clsDeviceEnumeration deviceEnumerator
         = (Scheduler.Classes.clsDeviceEnumeration)hs.GetDeviceEnumerator();
 
@@ -27,7 +26,7 @@ public static void Main(string[] args)
     {
         Scheduler.Classes.DeviceClass device = deviceEnumerator.GetNext();                    
 
-        Debug.WriteLine(device.get_Name(hs));
+        hs.WriteLog("Info", device.get_Name(hs));
 
         if (device.get_Relationship(hs) == Enums.eRelationship.Child)
         {
@@ -49,7 +48,7 @@ public static void Main(string[] args)
                 }
                 string parentName = parent.get_Name(hs);
 
-                Debug.WriteLine(deviceTypeString + ":" + device.get_Name(hs) + "<-" + parent.get_Device_Type_String(hs) + ":" + parentName);
+                hs.WriteLog("Info", deviceTypeString + ":" + device.get_Name(hs) + "<-" + parent.get_Device_Type_String(hs) + ":" + parentName);
                 device.set_Name(hs, parentName + " " + deviceTypeString);
             }
         }
@@ -68,8 +67,4 @@ public static void Main(string[] args)
             }
         }
     }
-
-    Debug.WriteLine("Done!");
 }
-
-
