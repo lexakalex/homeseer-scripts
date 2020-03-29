@@ -1,0 +1,18 @@
+{
+    "version":"2.0.0",
+    "tasks": [{
+        "label": "Build C# Script",
+        "command": "mono",
+        "args": [
+            "${env:HOME}/Library/Application Support/Code/User/cs-script.user/cscs.exe", 
+            "-d", 
+            "-e", 
+            "-co:/debug:full", 
+            "-ac:2", 
+            "-precompiler:${env:HOME}/Desktop/HomeSeer/homeseer-vscode/HomeSeerPrecompiler.cs",
+            "-out:${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
+            "${file}"
+        ],
+        "type": "process"
+    }],
+}

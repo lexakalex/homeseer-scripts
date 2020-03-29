@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [                        
+        {
+            "name": "CS-Script Debugger",
+            "type": "mono",
+            "preLaunchTask": "Build C# Script",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/${fileBasenameNoExtension}.exe",
+            "cwd": "${workspaceFolder}/bin",
+        }
+    ]
+}
